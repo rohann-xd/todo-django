@@ -8,7 +8,6 @@ A simple ToDo web application built with Django. This app allows users to create
 - List existing tasks
 - Mark tasks as completed
 - Delete tasks
-- User authentication and admin interface
 
 ## Requirements
 

@@ -22,8 +22,12 @@
         <ul>
             {% for todo in todos %}
                 <li>
-                    {{ todo.task }}
-                    <a class="delete-link" href="{% url 'delete_todo' todo.id %}">Delete</a>
+                    <form method="post" action="{% url 'toggle_complete' todo.id %}">
+                        {% csrf_token %}
+                        <input type="checkbox" name="completed" {% if todo.completed %}checked{% endif %} onchange="this.form.submit()">
+                        <span class="{% if todo.completed %}completed{% endif %}">{{ todo.task }}</span>
+                        <a class="delete-link" href="{% url 'delete_todo' todo.id %}">Delete</a>
+                    </form>
                 </li>
             {% endfor %}
         </ul>

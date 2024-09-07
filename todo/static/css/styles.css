@@ -85,3 +85,7 @@ li:last-child {
 .delete-link:hover {
     text-decoration: underline;
 }
+
+.completed {
+    text-decoration: line-through;
+}
