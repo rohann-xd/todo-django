@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List</title>
+    <!-- Load the static template tag library -->
+    {% load static %}
+    <!-- Link the CSS file -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>ToDo List</h1>
+
+        <form method="post" action="{% url 'add_todo' %}">
+            {% csrf_token %}
+            <input type="text" name="task" placeholder="Add a new task" required>
+            <button type="submit">Add</button>
+        </form>
+
+        <ul>
+            {% for todo in todos %}
+                <li>
+                    {{ todo.task }}
+                    <a class="delete-link" href="{% url 'delete_todo' todo.id %}">Delete</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Link the JavaScript file -->
+    <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>
